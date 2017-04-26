@@ -116,10 +116,8 @@ class TimeSeriesAnormalyDetector(object):
     def fit_detect(self, dataset, is_normalize = False):
         self._check_size(dataset)
         self.init2(dataset)
-        result = []
         for row in dataset:
-            result.append(self.detect(row ))
-        return result
+            yield self.detect(row )
 
     def diff(self, x1, x2):
         # 计算标准化欧氏距离与余弦距离
